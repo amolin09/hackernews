@@ -1,22 +1,32 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+
+
 function App() {
+
+  const [articles, setArticles] = useState([]);
+
+  useEffect(()=>{
+    fetch('http://hn.algolia.com/api/v1/search?hitsPerPage=20')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => setArticles(data.hits))
+  }, [])
+  
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <dix>
+          {/* <SearchForm setArticles = {setArticles}/> uncomment when SearchForm Component is complete*/}
+        </dix>
+
+        <div>
+
+          {/* <ListArticles articles = {articles}/> uncomment when ListArticles Component is complete*/}
+        </div>
       </header>
     </div>
   );
