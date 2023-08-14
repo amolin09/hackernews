@@ -3,6 +3,7 @@ import './App.css';
 
 // Importing components.
 import ArticleList from './Components/ArticleList';
+import { PrimarySearchAppBar } from './Components/searchBar';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
   // We only want the fetch to the API on the initial render, to prepopulate the article data.
   useEffect(()=>{
     // Use the fetch command to retrieve data from the API.
-    fetch('http://hn.algolia.com/api/v1/search?hitsPerPage=20')
+    fetch('http://hn.algolia.com/api/v1/search?hitsPerPage=25')
       // Will recieve a promise. Must wait until promise is resolved to parse the JSON.
       .then(res => {
         // 
@@ -37,7 +38,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <dix>
-          {/* <SearchForm setArticles = {setArticles}/> uncomment when SearchForm Component is complete*/}
+          <PrimarySearchAppBar setArticles = {setArticles}/>
         </dix>
         <div>
           <ArticleList articles = {articles}/>
